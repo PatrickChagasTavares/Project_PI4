@@ -1,0 +1,6 @@
+com\project_pi4\Servlet\ProductServlet.class
+com\project_pi4\DAO\ProductDAO.class
+com\project_pi4\Model\Product.class
+com\project_pi4\Servlet\Uploader.class
+com\project_pi4\DAO\ConnectionFactory.class
+com\project_pi4\Servlet\ProductServlet$productServlet.class
