@@ -28,15 +28,15 @@ public class ProductDAO {
     public ProductDAO() {
         con = new ConnectionFactory().getConnection();
 
-    }
+        }
 
-    public void Insert(Product produto) throws SQLException {
-        String sql = "INSERT INTO products (name,description,price,category) values (?,?,?,?)";
+        public void Insert(Product produto) throws SQLException {
+            String sql = "INSERT INTO products (name,description,price,category) values (?,?,?,?)";
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDesc());
-            stmt.setDouble((3), produto.getPreco());
+            stmt.setDouble(3, produto.getPreco());
             stmt.setString(4, produto.getCategoria());
 
             stmt.executeUpdate();

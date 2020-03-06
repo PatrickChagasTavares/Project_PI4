@@ -5,60 +5,24 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="${pageContext.request.contextPath}/css/product.css" rel="stylesheet">
-<body style="position: relative">
-    <div class="jumbotron">
-        <h2>Lista de Produtos</h2>
-    </div>
-    <section class="p-5">
-        <form action="Uploader" method="post" action="${pageContext.request.contextPath}/product/listProducts">
-            <input type="text" placeholder="Pesquise pelo nome ..." name="productName">
-            <button type="submit" class="btn btn-secondary">Pesquisar</button>
-        </form>
-        <div class="top-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Detalhes</th>
-                        <th scope="col">Preço Compra(R$)</th>
-                        <th scope="col">Preço Venda(R$)</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Quantidade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:choose>
-                        <c:when test="${sessionScope.productList != null && !sessionScope.productList.isEmpty()}">
-                            <c:forEach var="product" items="${products}">
-                                <tr>
-                                    <th scope="row"><c:out value="${product.id}" /></th>
-                                    <td><c:out value="${product.nome}"/></td>
-                                    <td><c:out value="${product.desc}"/></td>    
-                                    <td><c:out value="${product.categoria}"/></td>
-                                    <td><c:out value="${product.preco}"/></td>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <form action="Uploader" enctype="multipart/form-data" method="post">
 
-                                    <td class="d-flex">
-                                        <a href="${pageContext.request.contextPath}/product/edit?id=<c:out value='${product.id}'/>" class="btn btn-secondary">Editar</a>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <form method="post" action="${pageContext.request.contextPath}/product/delete?id=<c:out value='${product.id}' />">
-                                            <input type="hidden" name="id" value="${product.id}">
-                                            <button type="submit" class="btn btn-danger">Deletar</button> a
-                                        </form>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:when>
-                    </c:choose>
-                </tbody>
-            </table>
-        </div>
-         
-        <div class="d-flex justify-content-center" >
-            <a href="${pageContext.request.contextPath}/product/insert" class="btn btn-success">Novo produto</a>
-        </div>
-         
-    </section>
-</body>
+            <input type="file" name="file" />
+            <br>
+            <label>Nome: </label>
+            <input type="text" name="nome"/><br>
+            <label>Preço: </label>
+            <input type="text" name="preco"/><br>
+            <label>Descrição: </label>
+            <input type="text" name="desc"/><br>
+            <button type="submit">Salvar </button>
+        </form>
+    </body>
+</html>

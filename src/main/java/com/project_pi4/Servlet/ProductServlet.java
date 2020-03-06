@@ -20,11 +20,11 @@ import javax.servlet.http.HttpServletResponse;
  * @author giraw
  */
 public class ProductServlet {
-    @WebServlet (name="ProductServlet", urlPatterns = {"/product/*"})
+    @WebServlet (name="Produtos", urlPatterns = {"/product"})
     public class productServlet extends HttpServlet {
         String INSERT_OR_EDIT = "/update.jsp";
-        String LIST_USER= "/ProductList.jsp";
-        ProductDAO dao;
+        String LIST_USER= "/index.jsp";
+        ProductDAO dao; 
         Product produto;
         
         public productServlet() {
@@ -66,7 +66,6 @@ public class ProductServlet {
                         prod.setPreco(Double.parseDouble( req.getParameter("preco")));
                         prod.setCategoria("");
                         dao.Update(prod);
-                        resp.sendRedirect("index.jsp");
                     }
                 }catch(Exception error){
                     throw new RuntimeException("update_exec Error: "+ error);
@@ -76,8 +75,6 @@ public class ProductServlet {
             else if (action.equalsIgnoreCase("listProducts")){
                 forward = LIST_USER;
                 req.setAttribute("products", dao.GetAll());
-                String path = "./ProductList.jsp";
-                req.setAttribute("path", path);
             }
             
             else if (action.equalsIgnoreCase("insert")){
@@ -87,12 +84,12 @@ public class ProductServlet {
                 if(req.getParameter("nome").equals("") || req.getParameter("desc").equals("") || req.getParameter("preco").equals("")){
                     resp.sendRedirect("index.jsp");
                 }else{
+                    forward = LIST_USER;
                     prod.setNome(req.getParameter("nome"));
                     prod.setDesc(req.getParameter("desc"));
                     prod.setPreco(Double.parseDouble( req.getParameter("preco")));
                     prod.setCategoria("");
                     dao.Insert(prod);
-                    resp.sendRedirect("index.jsp");
                 }
                 
             }catch(Exception error){

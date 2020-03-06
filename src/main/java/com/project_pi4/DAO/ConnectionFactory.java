@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.project_pi4.DAO;
-
 /**
  *
  * @author lucas.paiva
@@ -16,7 +15,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
     private static final String driverName = "com.mysql.jdbc.Driver";
-    private static final String username = "newuser";
+    private static final String username = "root";
     private static final String password = "adminadmin";
     private static Connection con;
     private static final String urlString = "jdbc:mysql://localhost:3306/mobileStore?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC&useSSL=false";
@@ -24,7 +23,7 @@ public class ConnectionFactory {
     public static Connection getConnection() {
         try {
             Class.forName(driverName);
-            try {
+               try {
                 con = DriverManager.getConnection(urlString, username, password);
             } catch (SQLException ex) {
                 System.out.println("Failed to create the database connection.");

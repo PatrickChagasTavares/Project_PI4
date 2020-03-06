@@ -15,13 +15,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="index.jsp" method="post">
+            <form action="index.jsp" method="post">
             <label>Descrição: </label><br>
             <input type="text" name="desc"/><br>
             <button type="submit">Ok</button>
         </form>
-        
-        
             <a href="insert.jsp">Novo</a>
+            <a href="update.jsp">Alterar</a>
+            <a href="delete.jsp">Deletar</a>
+            
     </body>
 </html>
